@@ -1,0 +1,44 @@
+# Python module that is used to generate random numbers
+import random
+
+# Defines or starts the randomize_keno() function
+def randomize_keno():
+  print("\nWelcome to my Random Keno Number Generator!")
+
+  # While loop that repeats the process if the user wants to continue
+  # or ends if the user wants to stop
+  while True:
+    try:
+      # Asks the user to input the number of spots they'd like to play
+      #from 1 to 12
+      spots = int(input("\nPlease enter the number of spots you'd like to play (1-12):"))
+      # Print an error message and ask the user to input a different
+      # number if their input is less than 1 or greater than 12
+      if spots < 1 or spots > 12:
+        print("\nPlease enter a valid number between 1 and 12.")
+        continue
+      break
+      #Print an error message if user enters a non-integer value
+      #(symbols, letters, etc.)
+    except ValueError:
+      print("\nUser input was not a number. Please enter a number between 1 and 12.")
+
+
+  print("\nPlease wait while the program generates your random numbers...\n")
+# Generates a list of random numbers based on the number of spots the user wants to play
+  numbers = random.sample(range(1, 80), spots)
+  print("Here are the numbers:", sorted(numbers))
+  
+# Asks the user if they would like to play a different number of spots
+# or if they'd like new numbers
+# will convert user choice to lowercase if input is uppercase
+  randomize_again = input("\nWould you like to randomize again? (y/n):").lower()
+  if randomize_again == "y":
+    randomize_keno()
+  else:
+    print("\nThank you for using my Random Keno Number Generator!")
+
+if __name__ == "__main__":
+  # randomize_keno() will only run if the file is run directly
+  randomize_keno()
+
